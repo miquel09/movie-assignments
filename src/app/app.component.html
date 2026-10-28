@@ -1,4 +1,23 @@
-<h1>
-  {{ title() }}
-</h1>
-<cw-movies/>
+<div class="app-shell">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Frame home">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>FRAME<span class="brand-period">.</span></span>
+    </a>
+    <div class="header-copy">
+      <p class="eyebrow">YOUR PERSONAL MOVIE GUIDE</p>
+      <h1>{{ title() }}<span class="heading-period">.</span></h1>
+      <p class="header-description">A good story is always worth finding.</p>
+    </div>
+    <span class="header-decoration" aria-hidden="true">✳</span>
+  </header>
+
+  <main class="page-content">
+    <cw-movies/>
+  </main>
+
+  <footer class="site-footer">
+    <span>MADE FOR MOVIE LOVERS</span>
+    <span>GOOD STORIES STAY WITH US.</span>
+  </footer>
+</div>

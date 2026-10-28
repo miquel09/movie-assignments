@@ -1,7 +1,19 @@
-<ul>
-@for (movie of sortedMovies(); track movie.id) {
-  <li>{{ movie.name }} <button (click)="onMovieClicked(movie)">view...</button> </li>
-} @empty { 
-  <li>There are no items.</li>
-}
+<ul class="movie-list">
+  @for (movie of sortedMovies(); track movie.id) {
+    <li class="movie-card">
+      <span class="movie-number" aria-hidden="true">{{ $index + 1 }}</span>
+      <div class="movie-copy">
+        <h3>{{ movie.name }}</h3>
+        <span class="movie-rating" [attr.aria-label]="'Rating ' + movie.rating + ' out of 10'">
+          <span aria-hidden="true">★</span> {{ movie.rating }}
+        </span>
+      </div>
+      <button type="button" class="view-button" (click)="onMovieClicked(movie)" [attr.aria-label]="'View details for ' + movie.name">
+        <span>Details</span>
+        <span class="button-arrow" aria-hidden="true">↗</span>
+      </button>
+    </li>
+  } @empty {
+    <li class="empty-state">No movies to show just yet.</li>
+  }
 </ul>

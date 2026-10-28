@@ -16,7 +16,7 @@ export class MoviesComponent {
   movies = signal<Movie[]>([]);
 
   ngOnInit() {
-    this.movies.set(this.movieService.getMovies());
+    this.movieService.getMovies().subscribe(movies => this.movies.set(movies));
   }
 
   onMovieClicked(movie: Movie) {

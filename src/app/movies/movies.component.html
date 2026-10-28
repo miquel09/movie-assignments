@@ -1,4 +1,21 @@
-<cw-movie-list [movies]="movies()" (movieClicked)="onMovieClicked($event)"/>
-@if(selectedMovie(); as movie) {
-  <cw-movie-detail [movie]="movie"/>
-}
+<section class="collection" aria-labelledby="collection-title">
+  <div class="section-heading">
+    <span class="section-index">01 / THE COLLECTION</span>
+    <h2 id="collection-title">Explore the movies</h2>
+    <p>Picked for your next movie night, ranked by rating.</p>
+  </div>
+  <cw-movie-list [movies]="movies()" (movieClicked)="onMovieClicked($event)"/>
+</section>
+
+<section class="details-area" aria-label="Movie details">
+  @if(selectedMovie(); as movie) {
+    <cw-movie-detail [movie]="movie"/>
+  } @else {
+    <div class="detail-placeholder">
+      <span class="placeholder-icon" aria-hidden="true">✳</span>
+      <p class="placeholder-label">YOUR NEXT WATCH</p>
+      <h2>Choose a film<br>to get started.</h2>
+      <p>Explore the collection and select a movie to see its details.</p>
+    </div>
+  }
+</section>

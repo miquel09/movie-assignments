@@ -1,8 +1,18 @@
-  <div>
+  <div class="detail-card">
+    <div class="detail-topline">
+      <span class="detail-kicker">NOW SHOWING</span>
+      <span class="detail-id">NO. {{ movie()?.id }}</span>
+    </div>
+    <span class="detail-art" aria-hidden="true">✳</span>
     <h2>{{ movie()?.name }}</h2>
-    <div>
-      <p>Id: {{ movie()?.id }}</p>
-      <p>Genre: {{ movie()?.genre }}</p>
-      <p>Rating: {{ movie()?.rating }}</p>
+    <div class="detail-meta">
+      <div class="meta-item">
+        <span class="meta-label">GENRE</span>
+        <span class="meta-value">{{ movie()?.genre }}</span>
+      </div>
+      <div class="meta-item rating-item">
+        <span class="meta-label">RATING</span>
+        <span class="meta-value"><span aria-hidden="true">★</span> {{ movie()?.rating }}<small> / 10</small></span>
+      </div>
     </div>
   </div>

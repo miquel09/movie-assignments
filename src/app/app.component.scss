@@ -1,0 +1,138 @@
+.app-shell {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: relative;
+  min-height: 310px;
+  padding: 28px clamp(24px, 6vw, 72px) 52px;
+  overflow: hidden;
+  color: #fffaf1;
+  background: #202c34;
+  border-radius: 0 0 28px 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: #202c34;
+  background: #e7ae65;
+  border-radius: 9px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.brand-period,
+.heading-period {
+  color: #e7ae65;
+}
+
+.header-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 570px;
+  margin-top: 40px;
+}
+
+.eyebrow,
+.site-footer {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #e7ae65;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(44px, 7vw, 68px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.header-description {
+  margin-bottom: 0;
+  color: #c4c9c7;
+  font-size: 15px;
+}
+
+.header-decoration {
+  position: absolute;
+  right: 7%;
+  bottom: -90px;
+  color: rgb(231 174 101 / 11%);
+  font-size: 340px;
+  line-height: 1;
+}
+
+.page-content {
+  min-height: 340px;
+  padding: 48px 0 64px;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 4px 28px;
+  color: #8a8c87;
+  border-top: 1px solid #e4dfd5;
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .site-header {
+    min-height: 270px;
+    padding: 22px 24px 38px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .header-copy {
+    margin-top: 38px;
+  }
+
+  .header-decoration {
+    right: -9%;
+    bottom: -70px;
+    font-size: 250px;
+  }
+
+  .page-content {
+    padding: 36px 0 48px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    font-size: 9px;
+  }
+}
