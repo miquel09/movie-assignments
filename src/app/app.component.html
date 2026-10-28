@@ -1,20 +1,4 @@
 <h1>
   {{ title() }}
 </h1>
-<ul>
-@for (movie of movies(); track movie.id) {
-  <li>{{ movie.name }} <button (click)="onMovieClicked(movie)">view...</button> </li>
-} @empty { 
-  <li>There are no items.</li>
-}
-</ul>
-@if(selectedMovie(); as movie) {
-  <div>
-    <h2>{{ selectedMovie()?.name }}</h2>
-    <div>
-      <p>Id: {{ selectedMovie()?.id }}</p>
-      <p>Genre: {{ selectedMovie()?.genre }}</p>
-      <p>Rating: {{ selectedMovie()?.rating }}</p>
-    </div>
-  </div>
-}
+<cw-movies/>

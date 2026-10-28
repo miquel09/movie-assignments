@@ -1,0 +1,7 @@
+<ul>
+@for (movie of sortedMovies(); track movie.id) {
+  <li>{{ movie.name }} <button (click)="onMovieClicked(movie)">view...</button> </li>
+} @empty { 
+  <li>There are no items.</li>
+}
+</ul>

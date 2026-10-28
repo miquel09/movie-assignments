@@ -1,0 +1,4 @@
+<cw-movie-list [movies]="movies()" (movieClicked)="onMovieClicked($event)"/>
+@if(selectedMovie(); as movie) {
+  <cw-movie-detail [movie]="movie"/>
+}
