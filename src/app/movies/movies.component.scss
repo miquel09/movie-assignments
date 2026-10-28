@@ -3,59 +3,66 @@
 }
 
 .section-heading {
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .section-index,
 .placeholder-label {
-  color: #b94f36;
+  color: #cf197b;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.16em;
 }
 
 .section-heading h2 {
-  margin: 8px 0 6px;
-  color: #24292f;
+  margin: 9px 0 7px;
+  color: #3d2634;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(28px, 4vw, 36px);
   letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
 .section-heading p {
   margin-bottom: 0;
-  color: #747770;
+  color: #876d7d;
   font-size: 13px;
+  line-height: 1.6;
 }
 
 :host {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.8fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
   align-items: start;
-  gap: clamp(28px, 5vw, 64px);
+  gap: clamp(28px, 5vw, 60px);
 }
 
 .detail-placeholder {
   position: sticky;
-  top: 24px;
-  min-height: 260px;
-  padding: 28px;
+  top: 28px;
+  min-height: 280px;
+  padding: 30px;
   overflow: hidden;
-  background: #e9e3d8;
-  border: 1px solid #e1d9cb;
-  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(255 143 200 / 32%), transparent 55%),
+    linear-gradient(145deg, #fff, #f8e6f0);
+  border: 1px solid #f0d7e5;
+  border-radius: 20px;
+  box-shadow: 0 16px 38px rgb(144 58 105 / 9%), inset 0 1px 0 #fff;
 }
 
 .placeholder-icon {
   display: grid;
-  width: 38px;
-  height: 38px;
-  margin-bottom: 26px;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 28px;
   place-items: center;
-  color: #ad4b35;
-  background: #f6efe3;
-  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(145deg, #f04ca4, #bd2385);
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 14px;
   font-size: 20px;
+  box-shadow: 0 8px 20px rgb(192 35 128 / 24%);
 }
 
 .placeholder-label {
@@ -64,17 +71,26 @@
 
 .detail-placeholder h2 {
   margin-bottom: 10px;
-  color: #29323a;
+  color: #3d2634;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 27px;
+  font-size: 29px;
   letter-spacing: -0.025em;
   line-height: 1.15;
+}
+
+.detail-placeholder h2::after {
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, #e0218a, #a875d4);
+  content: '';
 }
 
 .detail-placeholder > p:last-child {
   max-width: 240px;
   margin-bottom: 0;
-  color: #6f726e;
+  color: #876d7d;
   font-size: 13px;
   line-height: 1.6;
 }

@@ -1,16 +1,34 @@
 .app-shell {
-  width: min(1120px, calc(100% - 48px));
+  width: min(1160px, calc(100% - 64px));
   margin: 0 auto;
 }
 
 .site-header {
   position: relative;
-  min-height: 310px;
-  padding: 28px clamp(24px, 6vw, 72px) 52px;
+  min-height: 320px;
+  margin-top: 24px;
+  padding: 28px clamp(28px, 6vw, 76px) 54px;
   overflow: hidden;
-  color: #fffaf1;
-  background: #202c34;
-  border-radius: 0 0 28px 28px;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 82% 105%, rgb(255 205 232 / 34%), transparent 42%),
+    radial-gradient(ellipse at 10% 0%, rgb(255 255 255 / 18%), transparent 38%),
+    linear-gradient(118deg, #c90d72 0%, #ed3199 52%, #a954c9 100%);
+  border: 1px solid rgb(255 255 255 / 42%);
+  border-radius: 26px;
+  box-shadow: 0 22px 55px rgb(193 31 119 / 22%), inset 0 1px 0 rgb(255 255 255 / 35%);
+}
+
+.site-header::after {
+  position: absolute;
+  top: -110px;
+  right: -120px;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgb(255 255 255 / 5%), 0 0 0 58px rgb(255 255 255 / 4%);
+  content: '';
 }
 
 .brand {
@@ -29,24 +47,26 @@
   width: 30px;
   height: 30px;
   place-items: center;
-  color: #202c34;
-  background: #e7ae65;
-  border-radius: 9px;
+  color: #bc146e;
+  background: linear-gradient(145deg, #fff, #ffd8ec);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 10px;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 20px;
   letter-spacing: 0;
+  box-shadow: 0 5px 16px rgb(94 18 67 / 20%);
 }
 
 .brand-period,
 .heading-period {
-  color: #e7ae65;
+  color: #ffe28a;
 }
 
 .header-copy {
   position: relative;
   z-index: 1;
   max-width: 570px;
-  margin-top: 40px;
+  margin-top: 46px;
 }
 
 .eyebrow,
@@ -58,7 +78,7 @@
 
 .eyebrow {
   margin: 0 0 10px;
-  color: #e7ae65;
+  color: #ffe2f2;
 }
 
 h1,
@@ -69,66 +89,72 @@ p {
 }
 
 h1 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(44px, 7vw, 68px);
+  font-size: clamp(46px, 7vw, 72px);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.05;
+  text-shadow: 0 3px 22px rgb(111 13 78 / 18%);
 }
 
 .header-description {
   margin-bottom: 0;
-  color: #c4c9c7;
+  color: rgb(255 255 255 / 84%);
   font-size: 15px;
+  line-height: 1.6;
 }
 
 .header-decoration {
   position: absolute;
-  right: 7%;
-  bottom: -90px;
-  color: rgb(231 174 101 / 11%);
-  font-size: 340px;
+  right: 5%;
+  bottom: -120px;
+  color: rgb(255 240 248 / 22%);
+  font-size: 370px;
   line-height: 1;
+  text-shadow: 0 0 55px rgb(255 255 255 / 18%);
+  transform: rotate(-12deg);
+  user-select: none;
 }
 
 .page-content {
   min-height: 340px;
-  padding: 48px 0 64px;
+  padding: 54px 0 68px;
 }
 
 .site-footer {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 4px 28px;
-  color: #8a8c87;
-  border-top: 1px solid #e4dfd5;
+  padding: 20px 4px 26px;
+  color: #987b8d;
+  border-top: 1px solid #f0d7e5;
 }
 
 @media (max-width: 600px) {
   .app-shell {
-    width: min(100% - 28px, 1120px);
+    width: min(100% - 28px, 1160px);
   }
 
   .site-header {
     min-height: 270px;
+    margin-top: 14px;
     padding: 22px 24px 38px;
-    border-radius: 0 0 22px 22px;
+    border-radius: 22px;
   }
 
   .header-copy {
-    margin-top: 38px;
+    margin-top: 36px;
   }
 
   .header-decoration {
-    right: -9%;
-    bottom: -70px;
-    font-size: 250px;
+    right: -13%;
+    bottom: -82px;
+    font-size: 270px;
   }
 
   .page-content {
-    padding: 36px 0 48px;
+    padding: 38px 0 50px;
   }
 
   .site-footer {

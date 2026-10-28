@@ -3,12 +3,20 @@
 :root {
   color-scheme: light;
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  color: #24292f;
-  background: #f5f2eb;
+  color: #3d2634;
+  background: #fff5fa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-ink: #3d2634;
+  --color-muted: #876d7d;
+  --color-paper: #fffafd;
+  --color-border: #f0d7e5;
+  --color-pink: #e0218a;
+  --color-pink-deep: #b90e68;
+  --color-pink-light: #ff8fc8;
+  --color-lilac: #a875d4;
 }
 
 * {
@@ -20,15 +28,36 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(ellipse at 90% 5%, rgb(222 164 93 / 12%), transparent 32rem),
-    #f5f2eb;
+    radial-gradient(ellipse at 92% 8%, rgb(255 143 200 / 22%), transparent 34rem),
+    radial-gradient(ellipse at 5% 52%, rgb(168 117 212 / 10%), transparent 32rem),
+    #fff5fa;
 }
 
 button {
   font: inherit;
 }
 
+input {
+  font: inherit;
+}
+
 ::selection {
   color: #fff;
-  background: #b94f36;
+  background: #b90e68;
+}
+
+:focus-visible {
+  outline: 3px solid #e0218a;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

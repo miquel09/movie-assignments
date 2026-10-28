@@ -1,18 +1,24 @@
-  <div class="detail-card">
-    <div class="detail-topline">
-      <span class="detail-kicker">NOW SHOWING</span>
-      <span class="detail-id">NO. {{ movie()?.id }}</span>
-    </div>
-    <span class="detail-art" aria-hidden="true">✳</span>
-    <h2>{{ movie()?.name }}</h2>
-    <div class="detail-meta">
-      <div class="meta-item">
-        <span class="meta-label">GENRE</span>
-        <span class="meta-value">{{ movie()?.genre }}</span>
-      </div>
-      <div class="meta-item rating-item">
-        <span class="meta-label">RATING</span>
-        <span class="meta-value"><span aria-hidden="true">★</span> {{ movie()?.rating }}<small> / 10</small></span>
-      </div>
-    </div>
+<form class="detail-card">
+  <div class="detail-topline">
+    <span class="detail-kicker">NOW SHOWING</span>
+    <span class="detail-id">NO. {{ movie()?.id }}</span>
   </div>
+  <span class="detail-art" aria-hidden="true">✳</span>
+  <h2>Movie details</h2>
+  <div class="detail-fields">
+    <label class="detail-field" for="name">
+      <span class="field-label">Name</span>
+      <input id="name" name="name" type="text" [(ngModel)]="movie().name" />
+    </label>
+
+    <label class="detail-field" for="genre">
+      <span class="field-label">Genre</span>
+      <input id="genre" name="genre" type="text" [(ngModel)]="movie().genre" />
+    </label>
+
+    <label class="detail-field" for="rating">
+      <span class="field-label">Rating <span class="field-hint">/ 10</span></span>
+      <input id="rating" name="rating" type="number" [(ngModel)]="movie().rating" />
+    </label>
+  </div>
+</form>
