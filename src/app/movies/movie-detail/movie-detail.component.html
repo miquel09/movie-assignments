@@ -20,5 +20,9 @@
       <span class="field-label">Rating <span class="field-hint">/ 10</span></span>
       <input id="rating" name="rating" type="number" [(ngModel)]="movie().rating" />
     </label>
+    <button type="button" class="save-button" (click)="OnSaveClicked()">
+      <span>Save</span>
+      <span class="save-button-sparkle" aria-hidden="true">✦</span>
+    </button>
   </div>
 </form>

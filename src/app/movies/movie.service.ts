@@ -7,7 +7,13 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
 export class MovieService {
     private http : HttpClient = inject(HttpClient); 
     private moviesUrl = 'api/movies';  // URL to web api
-    private moviesFavUrl = 'api/moviesFav';  // URL to web api
+
+    public updateMovie(movie: Movie) : Observable<void>{
+        let url = `${this.moviesUrl}/${movie.id}`;
+        return this.http.put<void>(url, movie).pipe(
+            catchError(this.handleError)
+        );
+    }
 
     public getMovies() : Observable<Movie[]> {
         return this.http.get<Movie[]>(this.moviesUrl).pipe(
@@ -15,13 +21,6 @@ export class MovieService {
             catchError(this.handleError)
         )
     }
-
-    public getFavMovies() : Observable<Movie[]>{
-        return this.http.get<Movie[]>(this.moviesFavUrl).pipe(
-            retry(2),
-            catchError(this.handleError)
-        );
-    } 
 
     private handleError(error: any) : Observable<never> {
         console.error('An error occurred:', error);

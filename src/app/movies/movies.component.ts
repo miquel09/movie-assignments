@@ -16,6 +16,10 @@ export class MoviesComponent {
   movies = signal<Movie[]>([]);
 
   ngOnInit() {
+    this.getMovies();
+  }
+
+  private getMovies(){
     const movies$ = this.movieService.getMovies();
     movies$.subscribe({
       next: (movies) => this.movies.set(movies),
@@ -23,7 +27,14 @@ export class MoviesComponent {
     })
   }
 
+  onMovieSaved(movie: Movie){
+    const movies$ = this.movieService.updateMovie(movie);
+    movies$.subscribe({
+      next: () => this.getMovies(),
+      error: (error) => console.error(error)
+    })  }
+
   onMovieClicked(movie: Movie) {
-    this.selectedMovie.set(movie);
+    this.selectedMovie.set({...movie});
   }
 }

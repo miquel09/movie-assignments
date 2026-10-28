@@ -9,7 +9,7 @@
 
 <section class="details-area" aria-label="Movie details">
   @if(selectedMovie(); as movie) {
-    <cw-movie-detail [movie]="movie"/>
+    <cw-movie-detail (save)="onMovieSaved($event)" [movie]="movie"/>
   } @else {
     <div class="detail-placeholder">
       <span class="placeholder-icon" aria-hidden="true">✳</span>

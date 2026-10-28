@@ -8,36 +8,61 @@
 
 .movie-card {
   position: relative;
+  isolation: isolate;
   display: flex;
   min-height: 94px;
   align-items: center;
   gap: 16px;
   padding: 17px 18px;
-  background: rgb(255 250 253 / 94%);
-  border: 1px solid #f0d7e5;
-  border-left: 4px solid #e975b2;
+  background:
+    radial-gradient(circle at 14% 25%, rgb(255 255 255 / 95%) 0 1px, transparent 2px),
+    radial-gradient(circle at 65% 77%, rgb(232 115 178 / 26%) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 18%, rgb(255 255 255 / 90%) 0 1px, transparent 2px),
+    linear-gradient(115deg, #fffafd, #fff1fa 48%, #fff7fd 72%, #fffafd);
+  background-size: 41px 41px, 53px 53px, 37px 37px, auto;
+  border: 1px solid #ffd1eb;
+  border-left: 4px solid #ff4fb5;
   border-radius: 15px;
-  box-shadow: 0 6px 18px rgb(144 58 105 / 5%);
+  box-shadow: 0 7px 20px rgb(144 58 105 / 8%), inset 0 1px 0 #fff;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.movie-card::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 24%, rgb(255 255 255 / 65%) 48%, transparent 72%);
+  background-size: 220% 100%;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
 }
 
 .movie-card:hover {
   transform: translateY(-3px);
   background: #fff;
   border-color: #f3b4d4;
-  border-left-color: #e0218a;
-  box-shadow: 0 14px 30px rgb(178 41 122 / 12%);
+  border-left-color: #ff1493;
+  box-shadow: 0 16px 34px rgb(255 20 147 / 22%), 0 0 22px rgb(255 79 181 / 19%), inset 0 1px 0 #fff;
+}
+
+.movie-card:hover::after {
+  opacity: 1;
+  animation: card-shimmer 1.15s ease-out;
 }
 
 .movie-number {
+  position: relative;
+  z-index: 2;
   display: grid;
   flex: 0 0 40px;
   width: 40px;
   height: 44px;
   place-items: center;
-  color: #a72b75;
-  background: #ffedf6;
-  border: 1px solid #f6d2e4;
+  color: #b10d6d;
+  background: linear-gradient(145deg, #fff7fc, #ffc9e8 70%, #f8c7ff);
+  border: 1px solid #ffb5dc;
   border-radius: 12px;
   font-size: 11px;
   font-weight: 700;
@@ -45,6 +70,8 @@
 }
 
 .movie-copy {
+  position: relative;
+  z-index: 2;
   flex: 1;
   min-width: 0;
 }
@@ -71,27 +98,50 @@
 }
 
 .view-button {
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
   display: inline-flex;
   min-height: 38px;
   align-items: center;
   gap: 9px;
   padding: 0 12px 0 14px;
   color: #fff;
-  background: linear-gradient(110deg, #e0218a, #bd2385);
-  border: 1px solid rgb(163 18 103 / 18%);
+  background: linear-gradient(110deg, #ff1493, #e6007e 58%, #bd1bd1);
+  border: 1px solid rgb(255 255 255 / 46%);
   border-radius: 10px;
   cursor: pointer;
   font-size: 11px;
   font-weight: 700;
-  box-shadow: 0 5px 13px rgb(192 35 128 / 20%);
+  box-shadow: 0 5px 16px rgb(255 20 147 / 34%), inset 0 1px 0 rgb(255 255 255 / 30%);
   transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.view-button::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 20% 28%, rgb(255 255 255 / 90%) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 72%, rgb(255 226 242 / 85%) 0 1px, transparent 2px),
+    linear-gradient(110deg, transparent 20%, rgb(255 255 255 / 38%) 48%, transparent 72%);
+  background-size: 27px 27px, 35px 35px, 220% 100%;
+  content: '';
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.view-button > span {
+  position: relative;
+  z-index: 1;
 }
 
 .view-button:hover {
   transform: translateY(-1px);
-  background: linear-gradient(110deg, #c81775, #a71970);
-  border-color: #a71970;
-  box-shadow: 0 8px 18px rgb(192 35 128 / 30%);
+  background: linear-gradient(110deg, #ed007f, #a90b68);
+  border-color: #ffb5dc;
+  box-shadow: 0 9px 22px rgb(255 20 147 / 48%), 0 0 16px rgb(255 143 207 / 36%);
 }
 
 .view-button:focus-visible {
@@ -100,6 +150,7 @@
 }
 
 .button-arrow {
+  position: relative;
   font-size: 15px;
   transition: transform 160ms ease;
 }
@@ -116,6 +167,16 @@
   border-radius: 15px;
   font-size: 13px;
   text-align: center;
+}
+
+@keyframes card-shimmer {
+  from {
+    background-position: 140% 0;
+  }
+
+  to {
+    background-position: -140% 0;
+  }
 }
 
 @media (max-width: 460px) {

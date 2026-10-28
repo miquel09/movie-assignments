@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Movie } from '../movie.interface';
 import { FormsModule } from '@angular/forms';
 
@@ -10,4 +10,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class MovieDetailComponent {
   movie = input.required<Movie>()
+  save = output<Movie>();
+
+  public OnSaveClicked(){
+    this.save.emit(this.movie());
+  }
 }

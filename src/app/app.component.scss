@@ -5,18 +5,105 @@
 
 .site-header {
   position: relative;
+  isolation: isolate;
   min-height: 320px;
   margin-top: 24px;
   padding: 28px clamp(28px, 6vw, 76px) 54px;
   overflow: hidden;
   color: #fff;
   background:
-    radial-gradient(ellipse at 82% 105%, rgb(255 205 232 / 34%), transparent 42%),
-    radial-gradient(ellipse at 10% 0%, rgb(255 255 255 / 18%), transparent 38%),
-    linear-gradient(118deg, #c90d72 0%, #ed3199 52%, #a954c9 100%);
-  border: 1px solid rgb(255 255 255 / 42%);
+    radial-gradient(ellipse at 82% 105%, rgb(255 236 248 / 48%), transparent 42%),
+    radial-gradient(ellipse at 10% 0%, rgb(255 255 255 / 30%), transparent 38%),
+    linear-gradient(118deg, #ff168f 0%, #f414a0 46%, #bb32e5 100%);
+  border: 1px solid rgb(255 255 255 / 54%);
   border-radius: 26px;
-  box-shadow: 0 22px 55px rgb(193 31 119 / 22%), inset 0 1px 0 rgb(255 255 255 / 35%);
+  box-shadow: 0 24px 64px rgb(255 20 147 / 34%), 0 0 42px rgb(255 79 181 / 23%), inset 0 1px 0 rgb(255 255 255 / 55%);
+}
+
+.header-topline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.glam-toggle {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 13px;
+  color: #86104e;
+  background: linear-gradient(145deg, #fff, #ffe4f2 60%, #f6ddff);
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  box-shadow: 0 5px 16px rgb(93 11 63 / 22%), inset 0 1px 0 #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.soundtrack-toggle .glam-toggle-gem {
+  font-size: 13px;
+}
+
+.soundtrack-error {
+  position: relative;
+  z-index: 1;
+  margin: 10px 0 0 auto;
+  color: #fff3fa;
+  font-size: 12px;
+  text-align: right;
+}
+
+.glam-toggle:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 8px 20px rgb(93 11 63 / 28%), 0 0 16px rgb(255 255 255 / 55%);
+}
+
+.glam-toggle:focus-visible {
+  outline: 3px solid #fff09d;
+  outline-offset: 3px;
+}
+
+.glam-toggle-gem {
+  color: #d20b78;
+  font-size: 15px;
+  text-shadow: 0 0 8px rgb(255 20 147 / 55%);
+}
+
+.extra-glam .glam-toggle-gem {
+  color: #d20b78;
+  animation: glam-gem-twinkle 1.8s ease-in-out infinite;
+}
+
+.site-header::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    repeating-conic-gradient(from 5deg at 86% 44%, rgb(255 245 213 / 13%) 0deg 2deg, transparent 2deg 13deg),
+    radial-gradient(circle at 86% 44%, rgb(255 246 216 / 54%), rgb(255 219 242 / 24%) 10%, transparent 38%),
+    linear-gradient(112deg, transparent 22%, rgb(255 255 255 / 18%) 38%, rgb(255 255 255 / 3%) 46%, transparent 62%);
+  background-size: auto, auto, 220% 100%;
+  background-position: center, center, 140% 0;
+  content: '';
+  animation: header-satin-shine 8s ease-in-out infinite, header-sun-glow 7s ease-in-out infinite alternate;
 }
 
 .site-header::after {
@@ -31,7 +118,24 @@
   content: '';
 }
 
+.extra-glam::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgb(255 244 210 / 82%) 0 1px, transparent 2px) 7% 18% / 137px 121px,
+    radial-gradient(circle, rgb(255 150 215 / 78%) 0 1px, transparent 2px) 63% 74% / 163px 149px,
+    radial-gradient(circle, rgb(255 255 255 / 76%) 0 1px, transparent 2px) 91% 42% / 109px 137px,
+    radial-gradient(ellipse at 50% 0%, rgb(255 91 183 / 12%), transparent 58%);
+  content: '';
+  opacity: 0.72;
+  pointer-events: none;
+  animation: glam-veil-twinkle 6s ease-in-out infinite alternate;
+}
+
 .brand {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -47,19 +151,19 @@
   width: 30px;
   height: 30px;
   place-items: center;
-  color: #bc146e;
-  background: linear-gradient(145deg, #fff, #ffd8ec);
+  color: #d20b78;
+  background: linear-gradient(145deg, #fff, #ffc5e6 58%, #f5b0ff);
   border: 1px solid rgb(255 255 255 / 75%);
   border-radius: 10px;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 20px;
   letter-spacing: 0;
-  box-shadow: 0 5px 16px rgb(94 18 67 / 20%);
+  box-shadow: 0 5px 18px rgb(94 18 67 / 28%), 0 0 20px rgb(255 255 255 / 48%);
 }
 
 .brand-period,
 .heading-period {
-  color: #ffe28a;
+  color: #fff09d;
 }
 
 .header-copy {
@@ -78,7 +182,7 @@
 
 .eyebrow {
   margin: 0 0 10px;
-  color: #ffe2f2;
+  color: #ffe2f4;
 }
 
 h1,
@@ -95,7 +199,7 @@ h1 {
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.05;
-  text-shadow: 0 3px 22px rgb(111 13 78 / 18%);
+  text-shadow: 0 3px 22px rgb(111 13 78 / 18%), 0 0 30px rgb(255 255 255 / 15%);
 }
 
 .header-description {
@@ -109,12 +213,59 @@ h1 {
   position: absolute;
   right: 5%;
   bottom: -120px;
-  color: rgb(255 240 248 / 22%);
+  color: rgb(255 235 249 / 34%);
   font-size: 370px;
   line-height: 1;
-  text-shadow: 0 0 55px rgb(255 255 255 / 18%);
+  text-shadow: 0 0 55px rgb(255 255 255 / 28%), 0 0 100px rgb(255 208 242 / 20%);
   transform: rotate(-12deg);
   user-select: none;
+}
+
+@keyframes glam-veil-twinkle {
+  from {
+    opacity: 0.38;
+    filter: brightness(0.9);
+  }
+
+  to {
+    opacity: 0.84;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes glam-gem-twinkle {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.9) rotate(-8deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(8deg);
+  }
+}
+
+@keyframes header-satin-shine {
+  0%,
+  25% {
+    background-position: center, center, 140% 0;
+  }
+
+  70%,
+  100% {
+    background-position: center, center, -140% 0;
+  }
+}
+
+@keyframes header-sun-glow {
+  from {
+    filter: brightness(0.94);
+  }
+
+  to {
+    filter: brightness(1.12);
+  }
 }
 
 .page-content {
@@ -127,8 +278,8 @@ h1 {
   justify-content: space-between;
   gap: 16px;
   padding: 20px 4px 26px;
-  color: #987b8d;
-  border-top: 1px solid #f0d7e5;
+  color: #f0cce8;
+  border-top: 1px solid rgb(255 143 207 / 34%);
 }
 
 @media (max-width: 600px) {
@@ -141,6 +292,21 @@ h1 {
     margin-top: 14px;
     padding: 22px 24px 38px;
     border-radius: 22px;
+  }
+
+  .header-topline {
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .glam-toggle {
+    min-height: 34px;
+    gap: 6px;
+    padding: 0 10px;
+    font-size: 9px;
   }
 
   .header-copy {

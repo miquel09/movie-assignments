@@ -1,9 +1,70 @@
-<div class="app-shell">
+<div class="starfield" aria-hidden="true">
+  <span class="aurora-ribbon aurora-ribbon-one"></span>
+  <span class="aurora-ribbon aurora-ribbon-two"></span>
+  @for (star of stars; track star.id) {
+    <span
+      class="star"
+      [class.star-bright]="star.bright"
+      [style.left.%]="star.x"
+      [style.top.%]="star.y"
+      [style.width.px]="star.size"
+      [style.height.px]="star.size"
+      [style.color]="star.color"
+      [style.animation-delay.s]="star.delay"
+      [style.animation-duration.s]="star.duration"
+    ></span>
+  }
+  <span class="shooting-star shooting-star-one"></span>
+  <span class="shooting-star shooting-star-two"></span>
+  <span class="shooting-star shooting-star-three"></span>
+  <span class="shooting-star shooting-star-four"></span>
+  <span class="shooting-star shooting-star-five"></span>
+  <span class="shooting-star shooting-star-six"></span>
+</div>
+
+<div class="app-shell" [class.extra-glam]="extraGlam()">
   <header class="site-header">
-    <a class="brand" href="/" aria-label="Frame home">
-      <span class="brand-mark" aria-hidden="true">F</span>
-      <span>FRAME<span class="brand-period">.</span></span>
-    </a>
+    @if (soundtrackPlaying()) {
+      <span class="soundtrack-bubbles" aria-hidden="true">
+        <span class="soundtrack-bubble soundtrack-bubble-one"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-two"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-three"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-four"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-five"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-six"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-seven"></span>
+        <span class="soundtrack-bubble soundtrack-bubble-eight"></span>
+      </span>
+    }
+    <div class="header-topline">
+      <a class="brand" href="/" aria-label="Frame home">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span>FRAME<span class="brand-period">.</span></span>
+      </a>
+      <div class="header-actions">
+        <button
+          class="glam-toggle"
+          type="button"
+          [attr.aria-pressed]="extraGlam()"
+          (click)="toggleExtraGlam()"
+        >
+          <span class="glam-toggle-gem" aria-hidden="true">✦</span>
+          {{ extraGlam() ? 'Extra glam on' : 'Extra glam' }}
+        </button>
+        <button
+          class="glam-toggle soundtrack-toggle"
+          type="button"
+          [attr.aria-pressed]="soundtrackPlaying()"
+          (click)="toggleSoundtrack()"
+        >
+          <span class="glam-toggle-gem" aria-hidden="true">{{ soundtrackPlaying() ? '♫' : '♪' }}</span>
+          {{ soundtrackPlaying() ? 'Pause soundtrack' : 'Play soundtrack' }}
+        </button>
+      </div>
+    </div>
+    @if (soundtrackError()) {
+      <p class="soundtrack-error" role="status">{{ soundtrackError() }}</p>
+    }
     <div class="header-copy">
       <p class="eyebrow">YOUR PERSONAL MOVIE GUIDE</p>
       <h1>{{ title() }}<span class="heading-period">.</span></h1>

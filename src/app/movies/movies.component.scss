@@ -8,24 +8,37 @@
 
 .section-index,
 .placeholder-label {
-  color: #cf197b;
+  color: #ff79c9;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.16em;
 }
 
 .section-heading h2 {
+  position: relative;
+  width: fit-content;
   margin: 9px 0 7px;
-  color: #3d2634;
+  color: #fff7fe;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(28px, 4vw, 36px);
   letter-spacing: -0.035em;
   line-height: 1.12;
 }
 
+.section-heading h2::after {
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin-top: 11px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff1493, #ff8fc8, #d79aff);
+  box-shadow: 0 2px 12px rgb(255 20 147 / 42%);
+  content: '';
+}
+
 .section-heading p {
   margin-bottom: 0;
-  color: #876d7d;
+  color: #d5c6e2;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -43,12 +56,27 @@
   min-height: 280px;
   padding: 30px;
   overflow: hidden;
+  isolation: isolate;
   background:
     radial-gradient(ellipse at 100% 0%, rgb(255 143 200 / 32%), transparent 55%),
     linear-gradient(145deg, #fff, #f8e6f0);
   border: 1px solid #f0d7e5;
   border-radius: 20px;
   box-shadow: 0 16px 38px rgb(144 58 105 / 9%), inset 0 1px 0 #fff;
+}
+
+.detail-placeholder::before {
+  position: absolute;
+  z-index: -1;
+  top: 24px;
+  right: 24px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgb(224 33 138 / 12%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 12px rgb(224 33 138 / 4%), 0 0 0 25px rgb(168 117 212 / 5%);
+  content: '';
+  pointer-events: none;
 }
 
 .placeholder-icon {
